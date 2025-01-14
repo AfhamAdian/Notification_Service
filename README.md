@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+# Notification Service
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a React application that integrates with Firebase Cloud Messaging to send and receive notifications. It demonstrates how to request notification permissions, retrieve a messaging token, and handle background notifications.
 
-## Available Scripts
+## Prerequisites
 
-In the project directory, you can run:
+- Node.js and npm installed
+- Firebase project set up
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. **Clone the repository:**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+   ```sh
+   git clone https://github.com/your-username/notification-service.git
+   cd notification-service
+   ```
+2. **Install dependencies**
+    ```
+    npm install
+    ```
+3. **Set up environment variables:**
+    Create a .env file in the root of the project and add your Firebase configuration:
+    ```sh
+    REACT_APP_FIREBASE_API_KEY=your_api_key_here
+    REACT_APP_FIREBASE_AUTH_DOMAIN=your_auth_domain_here
+    REACT_APP_FIREBASE_PROJECT_ID=your_project_id_here
+    REACT_APP_FIREBASE_STORAGE_BUCKET=your_storage_bucket_here
+    REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id_here
+    REACT_APP_FIREBASE_APP_ID=your_app_id_here
+    REACT_APP_FIREBASE_MEASUREMENT_ID=your_measurement_id_here
 
-### `npm test`
+    REACT_APP_FIREBASE_VAPID_KEY=your_vapid_key_here
+    ```
+4. **Start the development server:**
+    ```sh
+    npm start
+    ```
+    The application will be available at http://localhost:3000.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Project Structure
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- 📄 **src/firebase.js**: Initializes Firebase and sets up messaging.
+- 📄 **App.js**: Main application component that requests notification permissions and retrieves the messaging token.
+- 📂 **public/firebase-messaging-sw.js**: Service worker to handle background notifications.
+- 📂 **public/firebase-config.js**: Firebase configuration for the service worker.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## Usage
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. **Request Notification Permission**:  
+   When the application loads, it will request notification permission from the user.  
+   If granted, it will retrieve a messaging token and log it to the console.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. **Handle Background Notifications**:  
+   The service worker (**firebase-messaging-sw.js**) will handle background notifications and display them to the user.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
